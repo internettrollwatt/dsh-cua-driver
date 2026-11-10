@@ -1,0 +1,51 @@
+{
+  "name": "dsh-cua-driver",
+  "version": "0.1.0",
+  "description": "Self-contained DSH profile plugin that bridges trycua/cua's cua-driver (0.46.1, vendored Windows binaries) into DeepSeek Harness as background desktop/browser automation tools (cua_*).",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./package.json": "./package.json",
+    "./cordis.patch.yml": "./cordis.patch.yml"
+  },
+  "dsh": {
+    "bundle": { "patch": "./cordis.patch.yml" }
+  },
+  "files": [
+    "index.js",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "skills",
+    "vendor/**"
+  ],
+  "peerDependencies": {
+    "@deepseek-ai/dsh-tools": "*"
+  },
+  "peerDependenciesMeta": {
+    "@deepseek-ai/dsh-tools": { "optional": true }
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh",
+    "dsh-plugin",
+    "cua",
+    "cua-driver",
+    "computer-use",
+    "windows",
+    "gui-automation",
+    "uia",
+    "cdp",
+    "mcp"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/internettrollwatt/dsh-cua-driver.git"
+  },
+  "engines": { "node": ">=22" },
+  "os": [ "win32" ]
+}

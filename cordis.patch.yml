@@ -1,0 +1,19 @@
+# cordis.patch.yml — dsh-cua-driver bundle layer.
+# Installed as a local bundle in this DSH profile: the row below inserts the plugin.
+# `exe` may point at another cua-driver build; it defaults to the vendored 0.46.1
+# binary that ships inside this directory (vendor/cua-driver-rs-0.46.1-windows-x86_64).
+#
+# mcpArgs carries the launch grant: --grant existing-profile pre-authorizes (at
+# launch, trusted-human level) attaching the user's running Chromium profile via
+# CDP. Without it, cua_browser_prepare is refused in standard mode
+# (browser_consent_required). The grant applies to this plugin's driver process
+# only; other cua-driver installs are unaffected.
+- insert:
+  - id: cua-driver
+    name: '@local/dsh-cua-driver'
+    config:
+      toolPrefix: cua_
+      mcpArgs: ['--grant', 'existing-profile']
+      # eager: false          # true registers all 63 tools at startup (costly prompt);
+      #                       # false exposes `cua_activate` only until it is called.
+      # exe: 'C:\...\cua-driver.exe'
