@@ -51,7 +51,7 @@ dsh-cua-driver/
 
 ## Install
 
-1. Get the code anywhere stable (do not place it inside a cloud-sync folder that would copy ~93 MB):
+1. Get the code anywhere stable:
    ```powershell
    git clone https://github.com/internettrollwatt/dsh-cua-driver C:\tools\dsh-cua-driver
    ```
