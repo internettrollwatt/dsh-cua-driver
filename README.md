@@ -51,15 +51,27 @@ dsh-cua-driver/
 
 ## Install
 
+**Option A — from npm (simplest):** add the published package to your DSH profile
+(`C:\Users\<you>\.dsh\profiles\desktop\package.json` by default), the bundle, then restart DSH:
+
+```json
+"dependencies": { "dsh-cua-driver": "^0.1.0" },
+"dsh": { "profile": { "bundles": [ "…existing…", "dsh-cua-driver" ] } }
+```
+
+Then install the profile's dependencies (`pnpm install` in the profile directory, or let DSH do it)
+and restart DSH Desktop. In a new session, load the skill with `/cua-driver` and call
+`cua_activate` (it returns the tool list and a short manual).
+
+**Option B — from git (bleeding edge):**
+
 1. Get the code anywhere stable:
    ```powershell
    git clone https://github.com/internettrollwatt/dsh-cua-driver C:\tools\dsh-cua-driver
    ```
-2. In your DSH profile (default: `C:\Users\<you>\.dsh\profiles\desktop\package.json`) add the
-   dependency and the bundle:
+2. Same profile edits, pointing at a local/git dependency:
    ```json
-   "dependencies": { "dsh-cua-driver": "file:C:/tools/dsh-cua-driver" },
-   "dsh": { "profile": { "bundles": [ "…existing…", "dsh-cua-driver" ] } }
+   "dependencies": { "dsh-cua-driver": "file:C:/tools/dsh-cua-driver" }
    ```
    A `git+https://github.com/internettrollwatt/dsh-cua-driver.git` dependency works too.
    Then install the profile's dependencies (`pnpm install` in the profile directory, or let DSH do it).

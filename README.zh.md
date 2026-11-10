@@ -51,14 +51,26 @@ dsh-cua-driver/
 
 ## 安装
 
+**方式 A —— 从 npm（最简单）**：把已发布的包加进你的 DSH profile（默认
+`C:\Users\<you>\.dsh\profiles\desktop\package.json`），加上 bundle，然后重启 DSH：
+
+```json
+"dependencies": { "dsh-cua-driver": "^0.1.0" },
+"dsh": { "profile": { "bundles": [ "…现有的…", "dsh-cua-driver" ] } }
+```
+
+然后安装 profile 依赖（在 profile 目录跑 `pnpm install`，或交给 DSH），重启 DSH Desktop。
+新会话里：用 `/cua-driver` 加载 skill，然后调用 `cua_activate`（返回工具列表和简短手册）。
+
+**方式 B —— 从 git（尝鲜）**：
+
 1. 把代码放到任意稳定路径：
    ```powershell
    git clone https://github.com/internettrollwatt/dsh-cua-driver C:\tools\dsh-cua-driver
    ```
-2. 在你的 DSH profile（默认 `C:\Users\<you>\.dsh\profiles\desktop\package.json`）里加依赖和 bundle：
+2. 同样的 profile 编辑，依赖指向本地/git：
    ```json
-   "dependencies": { "dsh-cua-driver": "file:C:/tools/dsh-cua-driver" },
-   "dsh": { "profile": { "bundles": [ "…现有的…", "dsh-cua-driver" ] } }
+   "dependencies": { "dsh-cua-driver": "file:C:/tools/dsh-cua-driver" }
    ```
    也可以直接用 `git+https://github.com/internettrollwatt/dsh-cua-driver.git` 依赖。
    然后安装 profile 依赖（在 profile 目录跑 `pnpm install`，或交给 DSH）。
