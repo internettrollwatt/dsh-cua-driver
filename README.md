@@ -1,5 +1,7 @@
 # dsh-cua-driver
 
+[English](./README.md) · [中文](./README.zh.md)
+
 A self-contained **DeepSeek Harness (DSH) profile plugin** that adds **background Windows desktop and browser control** to DSH, powered by the [cua-driver](https://github.com/trycua/cua) MCP server (trycua/cua, v0.46.1, MIT).
 
 Everything the plugin needs ships inside this repository — the driver binaries are vendored in `vendor/`, so there is **nothing to install on the machine** besides the plugin itself.

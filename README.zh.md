@@ -1,5 +1,7 @@
 # dsh-cua-driver
 
+[English](./README.md) · [中文](./README.zh.md)
+
 一个自包含的 **DeepSeek Harness（DSH）profile 插件**，为 DSH 增加 **Windows 桌面与浏览器的后台控制**能力，由 [cua-driver](https://github.com/trycua/cua) MCP 服务器驱动（trycua/cua，v0.46.1，MIT）。
 
 插件运行所需的一切都随仓库提供——驱动二进制放在 `vendor/` 里，**除了插件本身，机器上不需要装任何东西**。
