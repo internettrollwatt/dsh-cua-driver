@@ -18,12 +18,8 @@
   - 代理光标叠加层：`cua_move_cursor`、`cua_set_agent_cursor_motion/theme`、`cua_get_agent_cursor_state`
   - 录制：`cua_start_recording` / `cua_stop_recording` / `cua_replay_trajectory`
 - **懒暴露**：启动时只注册 `cua_activate` 一个入口；调用它才会为 profile 注册完整工具面并返回简短手册（省 prompt 开销）。`eager: true` 可改为启动即全量注册。
-- **内置 `/cua-driver` skill**：一份简短的中文使用说明，通过代码注册进宿主 skill 注册表（宿主的 skill 文件扫描器不扫 `node_modules`，所以插件在代码里注册 skill——与 `dsh-codex-style-computer-use` 同一模式）。斜杠指令 `/cua-driver` 加载。
+- **内置 `/cua-driver` skill**：一份简短的中文使用说明，通过代码注册进宿主 skill 注册表。斜杠指令 `/cua-driver` 加载。
 - **CDP 预授权**：bundle patch 让驱动带 `--grant existing-profile` 启动，附着到你正在运行的 Edge/Chrome 配置无需再走同意流程。
-
-### 与 `dsh-codex-style-computer-use` 的关系
-
-那个插件走**前台** `SendInput`（动你的真实键鼠、需要焦点）；本插件走**后台**（UIA + `PostMessage` + CDP，默认对你的桌面零可见影响，除非你开代理光标叠加层）。同一任务里对同一目标窗口**只用一条通道**，不要混用 `cua_*` 与 `computer_*`。
 
 ## 目录结构
 

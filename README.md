@@ -18,12 +18,8 @@ Everything the plugin needs ships inside this repository — the driver binaries
   - agent-cursor overlay: `cua_move_cursor`, `cua_set_agent_cursor_motion/theme`, `cua_get_agent_cursor_state`
   - recording: `cua_start_recording` / `cua_stop_recording` / `cua_replay_trajectory`
 - **Lazy exposure**: at startup only `cua_activate` is registered. Calling it registers the full tool surface for the profile and returns a short usage manual (keeps prompt size small). Set `eager: true` to register everything at startup.
-- **Bundled `/cua-driver` skill**: a short Chinese usage manual registered with the host's skill registry (the host's skill scanner does not look into `node_modules`, so the plugin registers the skill in code — same pattern as `dsh-codex-style-computer-use`). Load it with the `/cua-driver` slash command.
+- **Bundled `/cua-driver` skill**: a short Chinese usage manual registered with the host's skill registry. Load it with the `/cua-driver` slash command.
 - **CDP pre-authorization**: the bundle patch starts the driver with `--grant existing-profile`, so attaching to your already-running Edge/Chrome profile does not need a consent flow.
-
-### How it relates to `dsh-codex-style-computer-use`
-
-That plugin drives the desktop through **foreground** `SendInput` (your real pointer/keyboard, focus required). This plugin drives it **in the background** (UIA + `PostMessage` + CDP; nothing visible unless you enable the agent-cursor overlay). Pick **one channel per target window** inside a task; do not mix `cua_*` and `computer_*` on the same target.
 
 ## Repository layout
 
