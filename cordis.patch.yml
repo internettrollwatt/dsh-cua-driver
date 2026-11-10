@@ -10,7 +10,7 @@
 # only; other cua-driver installs are unaffected.
 - insert:
   - id: cua-driver
-    name: '@local/dsh-cua-driver'
+    name: 'dsh-cua-driver'
     config:
       toolPrefix: cua_
       mcpArgs: ['--grant', 'existing-profile']

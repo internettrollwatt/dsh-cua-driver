@@ -83,7 +83,7 @@ dsh-cua-driver/
 
 - **代理光标叠加层**：`cua_*` 动作的可视化是一个*假光标*叠加层——真实指针绝不动。AX 动作脉冲、像素动作弧线滑行，闲置 15 秒自动隐藏。`cua_set_agent_cursor_motion` / `cua_set_agent_cursor_theme` / `cua_set_config` 可运行时调整，无需重启。
 - **per-user 驱动存储**：驱动在 `%USERPROFILE%\.cua-driver\` 保存配置（config.json、`.telemetry_id` 稳定匿名 ID、`version_check.json` 版本检查），同机所有 cua-driver 版本共享。`cua_get_config` / `cua_set_config` 可查可改。
-- **破坏性工具**（`cua_browser_download` 等）需要宿主侧 destructive 批准；在关闭了批准提示的 DSH 会话里会被拒绝——这是设计行为，如实报告即可，不要绕过。
+- **破坏性工具**（`cua_browser_download` 等）需要宿主侧 destructive 批准；在关闭了批准提示的 DSH 会话里会被拒绝——这是设计行为。
 - **升级驱动**：用 [trycua/cua releases](https://github.com/trycua/cua/releases) 的新版 kit 替换 `vendor/cua-driver-rs-*`（保留其中的 `LICENSE` 与 `THIRD_PARTY_NOTICES.md`），重启 DSH。工具面是从 `tools/list` 动态读的，无需改代码。
 
 ## 授权

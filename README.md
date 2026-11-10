@@ -100,8 +100,7 @@ retry arguments; if the CDP route stays unavailable, fall back to the UIA route 
   `.telemetry_id` — a stable anonymous id, and `version_check.json` — update checks), shared across
   all cua-driver versions on the machine. Inspect/tune via `cua_get_config` / `cua_set_config`.
 - **Destructive tools** (`cua_browser_download`, …) require host-side destructive approval; on
-  DSH sessions with approval prompts disabled they will be refused — by design, report it rather
-  than work around it.
+  DSH sessions with approval prompts disabled they will be refused — this is by design.
 - **Driver upgrade**: replace `vendor/cua-driver-rs-*` with a newer release kit from
   [trycua/cua releases](https://github.com/trycua/cua/releases) (keep its `LICENSE` and
   `THIRD_PARTY_NOTICES.md`) and restart DSH. The tool surface is read dynamically from

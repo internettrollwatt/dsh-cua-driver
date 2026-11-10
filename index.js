@@ -362,12 +362,12 @@ function splitSkillFile (raw) {
   return { data, body: raw.slice(match[0].length) }
 }
 
-// THE BUNDLED SKILL IS REGISTERED WITH THE HOST, NOT MERELY SHIPPED (same seam as
-// dsh-codex-style-computer-use). The host's skill filesystem scanner only walks
-// `<project>/.dsh/skills`, `<project>/.agents/skills`, configured custom dirs,
-// `<dshHome>/skills` and `<agentsHome>/skills` — never `node_modules` — so a `skills/`
-// folder inside this package is invisible to it. `ctx.skills.register()` contributes an
-// in-memory ("bundled") skill whose body is served from this package instead.
+// THE BUNDLED SKILL IS REGISTERED WITH THE HOST, NOT MERELY SHIPPED. The host's
+// skill filesystem scanner only walks `<project>/.dsh/skills`,
+// `<project>/.agents/skills`, configured custom dirs, `<dshHome>/skills` and
+// `<agentsHome>/skills` — never `node_modules` — so a `skills/` folder inside this
+// package is invisible to it. `ctx.skills.register()` contributes an in-memory
+// ("bundled") skill whose body is served from this package instead.
 //
 // This is an enhancement, never a precondition: a missing skills service or unreadable
 // file degrades to one log line and the tools are exactly as they were.
