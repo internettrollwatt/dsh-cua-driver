@@ -3,6 +3,20 @@
 All notable changes to `dsh-cua-driver` are documented here.
 Format: [Keep a Changelog](https://keepachangelog.com/).
 
+## [0.1.1] - 2026-11-11
+
+### Added
+
+- New skill file `exam-chaoxing.md` (scene-specific playthrough, referenced from `SKILL.md`'s browser CDP section):
+  - when the CDP route is refused (e.g. vertical-tab browser) and the exam page must be driven over the UIA
+    fallback, how to locate windows, read questions, click options and advance through a 学习通 (chaoxing /
+    mooc) online exam session.
+  - "preview the whole paper first, then backfill answers" workflow — more robust than question-by-question
+    reads, with `cua_run_steps` `expect` assertions per jump.
+  - Known UIA pitfalls: watermark-line flooding of the text tree, option labels that splice the letter prefix
+    into the label, `javascript:;` values on 下一题/上一题 hyperlinks, multi-blank question types.
+  - Submission default: stop on the page, do not auto-submit; the user decides.
+
 ## [0.1.0] - 2026-11-10
 
 ### Added

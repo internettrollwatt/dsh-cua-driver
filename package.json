@@ -1,6 +1,6 @@
 {
   "name": "dsh-cua-driver",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Self-contained DSH profile plugin that bridges trycua/cua's cua-driver (0.46.1, vendored Windows binaries) into DeepSeek Harness as background desktop/browser automation tools (cua_*).",
   "license": "MIT",
   "type": "module",
