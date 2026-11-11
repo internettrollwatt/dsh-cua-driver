@@ -4,7 +4,7 @@
 
 ## 前提：通道选择
 
-- 如果浏览器开启了**垂直标签页**，`cua_browser_prepare`（CDP 附着）可能报 `browser_wrong_target_refused`（"native tab strip did not expose one exact structural new-tab action"）。**不要纠结，直接走 UIA 路由**（见 SKILL.md "浏览器（CDP 路由）" 第 4 条）。
+- 如果浏览器开启了**垂直标签页**，`cua_browser_prepare`（CDP 附着）可能报 `browser_wrong_target_refused`（"native tab strip did not expose one exact structural new-tab action"）。**不要纠结，直接走 UIA 路由**（见 SKILL.md "浏览器（CDP 路由）"一节的回退规则：CDP 持续不可用时网页内容走 UIA 路由）。
 - 通道纪律：整个考试任务只用 `cua_*`（PostMessage/UIA 后台通道），不要切到 `computer_*`（SendInput 前台）。
 
 ## 答题流程（验证可行）

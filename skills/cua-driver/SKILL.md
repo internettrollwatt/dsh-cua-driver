@@ -31,8 +31,15 @@ description: 使用 cua-driver（cua_* 工具族）在后台控制 Windows GUI �
 2. `cua_get_browser_state`：先 bind（pid+window_id），再取 `snapshot_format:"semantic_v2"` 快照；ref 形如 `p<snapshot>:<index>`，导航或新快照后作废。
 3. 动作：`cua_browser_click` / `cua_browser_type`（`replace:true` 整段替换/清空）/ `cua_browser_select`（原生 <select>）/ `cua_browser_navigate`（仅 http/https/about）/ `cua_browser_pointer`（hover/右键/双击/滚动/拖拽）/ `cua_browser_dialog`（页内 JS 对话框）/ `cua_browser_set_input_files`。
 4. 浏览器调用被拒时，读拒绝结果里的 `next_call`（精确重试参数，常含会话标签与 pid/window_id）先照着重试；CDP 路由持续不可用时，网页内容回退 UIA 路由：`cua_set_value`（element_token，走 ValuePattern）+ 合成点击提交按钮，全程后台。
-   - 学习通 / chaoxing 在线考试的完整实战经验（逐题 vs 整卷预览、水印行刷屏、选项匹配陷阱、多空格题型）见 `exam-chaoxing.md`，遇同类任务先读它。
 5. 浏览器对象（target/tab/ref）都是**会话域**的：多步浏览器工作请带同一个短 `session` 标签（如 `browser-run-1`），所有调用都传它。
+
+## 场景子文件
+
+本 skill 是"主文件 + 场景子文件"结构：通用方法以本文件为准；某个场景的踩坑与实战走法放在同目录下的对应子文件里，**动手前先对照下表，命中哪个场景就先读哪个文件再开干**。后续新增场景也按"一个场景一个 md"的方式加在这里登记。
+
+| 场景 | 子文件 | 何时读 |
+|------|--------|--------|
+| 学习通（超星 / chaoxing / mooc）在线考试、答题页 | `exam-chaoxing.md` | 作答学习通在线考试时（CDP 附着被拒、需 UIA 回退驱动答题页；逐题 vs 整卷预览、水印行刷屏、选项匹配陷阱、多空格题型） |
 
 ## 光标与外观
 
