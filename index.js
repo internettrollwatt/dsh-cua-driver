@@ -6,7 +6,7 @@
 //   3. initialize -> notifications/initialized -> tools/list;
 //   4. expose the returned tools as DSH tools with a `cua_` prefix.
 //
-// Exposure model: by default only `cua_activate` is registered at startup (63 MCP
+// Exposure model: by default only `cua_activate` is registered at startup (62 MCP
 // tools with long descriptions would otherwise be paid for on every request).
 // Calling it registers the full surface for the profile and returns a short manual.
 // Set `eager: true` in the bundle row to register everything immediately.
@@ -27,12 +27,12 @@ const PLUGIN_DIR = dirname(fileURLToPath(import.meta.url))
 const SKILL_DIR = joinPath(PLUGIN_DIR, 'skills', 'cua-driver')
 
 /**
- * Locate the vendored `cua-driver.exe`. Prefers the known 0.46.1 layout, then falls
+ * Locate the vendored `cua-driver.exe`. Prefers the known 0.55.0 layout, then falls
  * back to any `vendor/cua-driver-rs-<version>/` directory so a driver upgrade that
  * swaps the version folder does not break the plugin. `config.exe` always wins.
  */
 function findVendorExe () {
-  const known = joinPath(PLUGIN_DIR, 'vendor', 'cua-driver-rs-0.46.1-windows-x86_64', 'cua-driver.exe')
+  const known = joinPath(PLUGIN_DIR, 'vendor', 'cua-driver-rs-0.55.0-windows-x86_64', 'cua-driver.exe')
   if (existsSync(known)) return known
   const vendorDir = joinPath(PLUGIN_DIR, 'vendor')
   try {
@@ -45,12 +45,12 @@ function findVendorExe () {
   return null
 }
 const CLIENT_NAME = 'dsh-cua-driver'
-const CLIENT_VERSION = '0.1.0'
+const CLIENT_VERSION = '0.1.2'
 
 // Tools that never move the pointer or inject input; safe to run concurrently.
 const READ_ONLY = new Set([
   'list_apps', 'list_windows', 'get_window_state', 'get_desktop_state', 'get_accessibility_tree',
-  'get_screen_size', 'get_cursor_position', 'get_agent_cursor_state', 'get_session_state',
+  'get_screen_size', 'get_cursor_position', 'get_agent_cursor_state',
   'get_session', 'list_sessions', 'get_config', 'get_guide', 'check_permissions', 'health_report',
   'get_recording_state', 'get_browser_state', 'debug_window_info', 'check_for_update', 'zoom',
   'verify_state',

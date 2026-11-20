@@ -2,17 +2,17 @@
 
 [English](./README.md) · [中文](./README.zh.md)
 
-一个自包含的 **DeepSeek Harness（DSH）profile 插件**，为 DSH 增加 **Windows 桌面与浏览器的后台控制**能力，由 [cua-driver](https://github.com/trycua/cua) MCP 服务器驱动（trycua/cua，v0.46.1，MIT）。
+一个自包含的 **DeepSeek Harness（DSH）profile 插件**，为 DSH 增加 **Windows 桌面与浏览器的后台控制**能力，由 [cua-driver](https://github.com/trycua/cua) MCP 服务器驱动（trycua/cua，v0.55.0，MIT）。
 
 插件运行所需的一切都随仓库提供——驱动二进制放在 `vendor/` 里，**除了插件本身，机器上不需要装任何东西**。
 
 ## 它做什么
 
 - **拉起 vendor 内的驱动**：`vendor/.../cua-driver.exe mcp --direct --grant existing-profile`，走 MCP 协议（换行分隔的 JSON-RPC 2.0）。不依赖外部安装、不依赖常驻守护进程，插件只管这一个进程。
-- **把驱动的约 63 个工具以 `cua_` 前缀暴露为 DSH 工具**：
+- **把驱动的约 62 个工具以 `cua_` 前缀暴露为 DSH 工具**：
   - 观察：`cua_list_windows`、`cua_get_window_state`（UIA 树 + 截图）、`cua_get_desktop_state`、`cua_zoom`、`cua_get_accessibility_tree`
   - 后台输入：`cua_click`、`cua_double_click`、`cua_right_click`、`cua_drag`、`cua_type_text`、`cua_press_key`、`cua_hotkey`、`cua_set_value`、`cua_scroll`、`cua_clipboard_read/write`、`cua_invoke_menu`——走 UIA/`PostMessage`，**不抢焦点、不移动用户指针**
-  - CDP 浏览器工具：`cua_browser_prepare`、`cua_get_browser_state`、`cua_browser_click/type/select/navigate/pointer/dialog/set_input_files/download`
+  - CDP 浏览器工具：`cua_browser_prepare`、`cua_get_browser_state`、`cua_browser_click/type/select/navigate/pointer/dialog/set_input_files/download`、`cua_browser_motion_policy`
   - 批处理与脚本：`cua_run_steps`、`cua_run_script`、`cua_start_session` / `cua_end_session`
   - 验证与诊断：`cua_verify_state`、`cua_check_permissions`、`cua_health_report`、`cua_get_guide`
   - 代理光标叠加层：`cua_move_cursor`、`cua_set_agent_cursor_motion/theme`、`cua_get_agent_cursor_state`
@@ -33,7 +33,7 @@ dsh-cua-driver/
 ├── skills/
 │   └── cua-driver/SKILL.md   # `/cua-driver` skill（中文使用说明）
 └── vendor/
-    └── cua-driver-rs-0.46.1-windows-x86_64/
+    └── cua-driver-rs-0.55.0-windows-x86_64/
         ├── cua-driver.exe             # MCP stdio 服务器（`mcp --direct`）
         ├── cua-driver-uia.exe
         ├── cua-cursor-theme.exe

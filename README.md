@@ -2,17 +2,17 @@
 
 [English](./README.md) · [中文](./README.zh.md)
 
-A self-contained **DeepSeek Harness (DSH) profile plugin** that adds **background Windows desktop and browser control** to DSH, powered by the [cua-driver](https://github.com/trycua/cua) MCP server (trycua/cua, v0.46.1, MIT).
+A self-contained **DeepSeek Harness (DSH) profile plugin** that adds **background Windows desktop and browser control** to DSH, powered by the [cua-driver](https://github.com/trycua/cua) MCP server (trycua/cua, v0.55.0, MIT).
 
 Everything the plugin needs ships inside this repository — the driver binaries are vendored in `vendor/`, so there is **nothing to install on the machine** besides the plugin itself.
 
 ## What it does
 
 - **Spawns the vendored driver**: `vendor/.../cua-driver.exe mcp --direct --grant existing-profile`, spoken over MCP (newline-delimited JSON-RPC 2.0). No external installation, no daemon, no extra processes beyond the one the plugin manages.
-- **Exposes the driver's ~63 tools as DSH tools** with a `cua_` prefix:
+- **Exposes the driver's ~62 tools as DSH tools** with a `cua_` prefix:
   - observation: `cua_list_windows`, `cua_get_window_state` (UIA tree + screenshot), `cua_get_desktop_state`, `cua_zoom`, `cua_get_accessibility_tree`
   - background input: `cua_click`, `cua_double_click`, `cua_right_click`, `cua_drag`, `cua_type_text`, `cua_press_key`, `cua_hotkey`, `cua_set_value`, `cua_scroll`, `cua_clipboard_read/write`, `cua_invoke_menu` — delivered via UIA/`PostMessage`, **without stealing focus or moving your pointer**
-  - CDP browser tools: `cua_browser_prepare`, `cua_get_browser_state`, `cua_browser_click/type/select/navigate/pointer/dialog/set_input_files/download`
+  - CDP browser tools: `cua_browser_prepare`, `cua_get_browser_state`, `cua_browser_click/type/select/navigate/pointer/dialog/set_input_files/download`, `cua_browser_motion_policy`
   - batching & scripting: `cua_run_steps`, `cua_run_script`, `cua_start_session`/`cua_end_session`
   - verification & diagnostics: `cua_verify_state`, `cua_check_permissions`, `cua_health_report`, `cua_get_guide`
   - agent-cursor overlay: `cua_move_cursor`, `cua_set_agent_cursor_motion/theme`, `cua_get_agent_cursor_state`
@@ -33,7 +33,7 @@ dsh-cua-driver/
 ├── skills/
 │   └── cua-driver/SKILL.md   # the `/cua-driver` skill (Chinese usage manual)
 └── vendor/
-    └── cua-driver-rs-0.46.1-windows-x86_64/
+    └── cua-driver-rs-0.55.0-windows-x86_64/
         ├── cua-driver.exe             # MCP stdio server (`mcp --direct`)
         ├── cua-driver-uia.exe
         ├── cua-cursor-theme.exe
